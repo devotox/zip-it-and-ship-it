@@ -6,8 +6,10 @@
 [![Dependencies](https://david-dm.org/netlify/zip-it-and-ship-it/status.svg)](https://david-dm.org/netlify/zip-it-and-ship-it)
 [![Downloads](https://img.shields.io/npm/dm/@netlify/zip-it-and-ship-it.svg)](https://www.npmjs.com/package/@netlify/zip-it-and-ship-it)
 
-This module handles zipping up lambda functions with their dependencies before deployment. You are probably looking for
-[netlify-cli](https://github.com/netlify/cli) or [js-client](https://github.com/netlify/js-client).
+This module handles zipping up lambda functions with their dependencies before
+deployment. You are probably looking for
+[netlify-cli](https://github.com/netlify/cli) or
+[js-client](https://github.com/netlify/js-client).
 
 ## Installation
 
@@ -23,13 +25,15 @@ const { zipFunctions } = require('@netlify/zip-it-and-ship-it')
 zipFunctions('functions', 'functions-dist')
 ```
 
-This will take all functions in the `functions` folder and create a matching `.zip` file in the `functions-dist` folder.
+This will take all functions in the `functions` folder and create a matching
+`.zip` file in the `functions-dist` folder.
 
-Each function can either be a single `.js` file that exports a `handler` or a folder with a `.js` with the same name as
-the folder exporting a handler.
+Each function can either be a single `.js` file that exports a `handler` or a
+folder with a `.js` with the same name as the folder exporting a handler.
 
-The packaging tool will look for the `package.json` closest to the handler and use that for dependency resolution. Make
-sure you've run `npm install` or `yarn` for each `package.json` before using `zip-it-and-ship-it`.
+The packaging tool will look for the `package.json` closest to the handler and
+use that for dependency resolution. Make sure you've run `npm install` or `yarn`
+for each `package.json` before using `zip-it-and-ship-it`.
 
 Ie, the following combinations would all work:
 
@@ -55,7 +59,8 @@ Ie, the following combinations would all work:
 /node_modules/
 ```
 
-Zip It and Ship It will only include dependencies in each zip file that's been required from the relevant handler file.
+Zip It and Ship It will only include dependencies in each zip file that's been
+required from the relevant handler file.
 
 ### File Serving
 
@@ -66,8 +71,9 @@ As of v0.3.0 the serveFunctions capability has been extracted out to
 
 ### `promise(zipped) = zipFunctions(source, destination, [opts])`
 
-Discover and zip all functions found in the `source` path into the `destination`. Returns a promise containing a
-`zipped` array of function objects.
+Discover and zip all functions found in the `source` path into the
+`destination`. Returns a promise containing a `zipped` array of function
+objects.
 
 The array of zipped function objects has the following shape:
 
@@ -93,8 +99,9 @@ const zipped = [
 ## CLI
 
 A minimal CLI version of `zip-it-and-ship-it` is provided for use inside the
-[build-image](https://github.com/netlify/build-image), although this is automatically invoked on users behalf during
-builds and you typically do not need to run this yourself.
+[build-image](https://github.com/netlify/build-image), although this is
+automatically invoked on users behalf during builds and you typically do not
+need to run this yourself.
 
 ```console
 $ zip-it-and-ship-it --help
@@ -108,4 +115,5 @@ Usage: zip-it-and-ship-it [source] [destination] {options}
 
 ## See Also
 
-Check [our official docs here](https://www.netlify.com/docs/cli/#unbundled-javascript-function-deploys).
+Check
+[our official docs here](https://www.netlify.com/docs/cli/#unbundled-javascript-function-deploys).
